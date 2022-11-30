@@ -22,10 +22,16 @@
 			position: relative;
 		}
 
-		.innerdiv {
-			position: relative;
+		.innerRightdiv {
+			position: fixed;
 			bottom: 0;
 			right: 0;
+		}
+
+		.innerLeftdiv {
+			position: fixed;
+			bottom: 0;
+			left: 0;
 		}
 	</style>
 	<link rel="stylesheet" type="text/css" href="./css/screen.css" />
@@ -371,41 +377,44 @@
 <body>
 
 	<!-- Example of FIXED or ABSOLUTE position -->
-	
-	<div class="inner">
-		<div class="inner" id="joy1Div" style="width:100px;height:100px;margin-top:900px;margin-left:10px;"></div>
-		<div class="inner" id="joy1PosizioneX"></div>
-		<div class="inner" id="joy1PosizioneY"></div>
-		<div class="inner" id="joy1Direzione"></div>
-		<div class="inner" id="joy1X"></div>
-		<div class="inner" id="joy1Y"></div>
 
-		<div class="inner" id="joy2Div" style="width:100px;height:100px;margin-top:900px;margin-left:1200px;"></div>
-		<div class="inner" id="joy2PosizioneX"></div>
-		<div class="inner" id="joy2PosizioneY"></div>
-		<div class="inner" id="joy2Direzione"></div>
-		<div class="inner" id="joy2X"></div>
-		<div class="inner" id="joy2Y"></div>
+	<div class="innerLeftdiv">
+		<div class="innerLeftdiv" id="joy1Div" style="width:110px;height:110px;margin-bottom:10px;margin-left:10px;">
+		</div>
+		<div class="innerLeftdiv" id="joy1PosizioneX"></div>
+		<div class="innerLeftdiv" id="joy1PosizioneY"></div>
+		<div class="innerLeftdiv" id="joy1Direction"></div>
+		<div class="innerLeftdiv" id="joy1X"></div>
+		<div class="innerLeftdiv" id="joy1Y"></div>
+	</div>
+
+	<div class="innerRightdiv">
+		<div class="innerRightdiv" id="joy2Div" style="width:110px;height:110px;margin-bottom:10px;margin-right:10px;">
+		</div>
+		<div class="innerRightdiv" id="joy2PosizioneX"></div>
+		<div class="innerRightdiv" id="joy2PosizioneY"></div>
+		<div class="innerRightdiv" id="joy2Direction"></div>
+		<div class="innerRightdiv" id="joy2X"></div>
+		<div class="innerRightdiv" id="joy2Y"></div>
 	</div>
 
 	<script type="text/javascript">
 		// Create JoyStick object into the DIV 'joy1Div'
 		// var Joy1 = new JoyStick('joy1Div');
-
-		var joy1IinputPosX = document.getElementById("joy1PosizioneX");
+		var joy1InputPosX = document.getElementById("joy1PosizioneX");
 		var joy1InputPosY = document.getElementById("joy1PosizioneY");
-		var joy1Direzione = document.getElementById("joy1Direzione");
+		var joy1Direction = document.getElementById("joy1Direction");
 		var joy1X = document.getElementById("joy1X");
 		var joy1Y = document.getElementById("joy1Y");
 
 		// Create JoyStick object into the DIV 'joy1Div'
 		var Joy1 = new JoyStick('joy1Div', {}, function (stickData) {
-			joy1IinputPosX.value = stickData.xPosition;
+			joy1InputPosX.value = stickData.xPosition;
 			joy1InputPosY.value = stickData.yPosition;
-			joy1Direzione.value = stickData.cardinalDirection;
+			joy1Direction.value = stickData.cardinalDirection;
 			joy1X.value = stickData.x;
 			joy1Y.value = stickData.y;
-			switch (joy1Direzione.value) {
+			switch (joy1Direction.value) {
 				case "C":
 					$RG.PersonStopMove();
 					break;
@@ -442,22 +451,22 @@
 
 		// Create JoyStick object into the DIV 'joy2Div'
 		// Create JoyStick foor ROTation
-		
-		
-		var joy2IinputPosX = document.getElementById("joy2PosizioneX");
+
+
+		var joy2InputPosX = document.getElementById("joy2PosizioneX");
 		var joy2InputPosY = document.getElementById("joy2PosizioneY");
-		var joy2Direzione = document.getElementById("joy2Direzione");
+		var joy2Direction = document.getElementById("joy2Direction");
 		var joy2X = document.getElementById("joy2X");
 		var joy2Y = document.getElementById("joy2Y");
 
 
 		var Joy2 = new JoyStick('joy2Div', {}, function (stickData) {
-			joy2IinputPosX.value = stickData.xPosition;
+			joy2InputPosX.value = stickData.xPosition;
 			joy2InputPosY.value = stickData.yPosition;
-			joy2Direzione.value = stickData.cardinalDirection;
+			joy2Direction.value = stickData.cardinalDirection;
 			joy2X.value = stickData.x;
 			joy2Y.value = stickData.y;
-			switch (joy2Direzione.value) {
+			switch (joy2Direction.value) {
 				case "C":
 					$RG.PersonStopRotate();
 					break;
@@ -490,11 +499,6 @@
 					break;
 			}
 		});
-
-
-
-
-
 	</script>
 
 	<!-- buttons -->
