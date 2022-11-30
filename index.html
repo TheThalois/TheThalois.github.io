@@ -320,17 +320,16 @@
 
 	<div class="inner">
 		<div class="inner" id="joy1Div" style="width:200px;height:200px;margin:50px"></div>
-		Position X:<input id="joy1PosizioneX" type="text" /><br />
-		Position1 Y:<input id="joy1PosizioneY" type="text" /><br />
-		Direzione:<input id="joy1Direzione" type="text" /><br />
-		X :<input id="joy1X" type="text" /></br>
-		Y :<input id="joy1Y" type="text" />
-		
+		<div class="inner" id="joy1PosizioneX"  ></div>
+		<div class="inner" id="joy1PosizioneY"  ></div>
+		<div class="inner" id="joy1Direzione" ></div>
+		<div class="inner" id="joy1X" ></div>
+		<div class="inner" id="joy1Y"  ></div>		
 	</div>
 
 	<script type="text/javascript">
 		// Create JoyStick object into the DIV 'joy1Div'
-		//var Joy1 = new JoyStick('joy1Div');
+		// var Joy1 = new JoyStick('joy1Div');
 
 		var joy1IinputPosX = document.getElementById("joy1PosizioneX");
 		var joy1InputPosY = document.getElementById("joy1PosizioneY");
@@ -347,7 +346,7 @@
 			joy1Y.value = stickData.y;
 			switch (joy1Direzione.value) {
 				case "C":
-					console.log('C');
+					console.log('C1');
 					$RG.PersonStopMove();
 					break;
 				case "N":
