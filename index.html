@@ -5,6 +5,10 @@
 	<title>Heythem Salhi 3D Portfolio</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<style>
+		.inner {
+			position: absolute;
+		}
+
 		body {
 			width: 100%;
 			height: 100%;
@@ -73,6 +77,48 @@
 				$('#lyr_pausegame').css('display', 'none');
 				$('#btn_pausegame').css('display', 'none');
 			};
+			
+			
+			$RG.PersonMoveFW = function () {
+				//Move the user ForWard 
+				console.log('Move the user ForWard');
+				$WORLD.controls.onMoveFW();
+			};			
+			$RG.PersonMoveBW = function () {
+				console.log('Move the user BackWard');
+				$WORLD.controls.onMoveBW();
+			};			
+			$RG.PersonMoveRT = function () {
+				console.log('Move the user RighT');
+				$WORLD.controls.onMoveRT();
+			};			
+			$RG.PersonMoveLF = function () {
+				console.log('Move the user LeFt');
+				$WORLD.controls.onMoveLF();
+			};			
+			$RG.PersonStopMove = function () {
+				console.log('Stop');
+				$WORLD.controls.StopMove();
+			};
+
+
+			$RG.PersonMoveFwRt = function () {
+				console.log('onMoveFwRt');
+				$WORLD.controls.onMoveFwRt();
+			};
+			$RG.PersonMoveFwLf = function () {
+				console.log('onMoveFwLf');
+				$WORLD.controls.onMoveFwLf();
+			};
+			$RG.PersonMoveBwRt = function () {
+				console.log('onMoveBwRt');
+				$WORLD.controls.onMoveBwRt();
+			};
+			$RG.PersonMoveBwLf = function () {
+				console.log('onMoveBwLf');
+				$WORLD.controls.onMoveBwLf();
+			};
+
 
 			$RG.baseDirectory = "./";
 			$UI.drawloading();
@@ -250,6 +296,7 @@
 					setTimeout(function () {
 						$WORLD.renderer.render($WORLD.scene, $WORLD.camera);
 						$UI.loading.hide();
+						$RG.continueGame();
 					}, 1000
 					)
 				}, function () {
@@ -268,15 +315,17 @@
 <body>
 
 	<!-- Example of FIXED or ABSOLUTE position -->
-	<div id="joy3Div" style="width:200px;height:200px;margin:50px;position:fixed;bottom:30px;left:500px;"></div>
+	<div class="inner" id="joy3Div" style="width:200px;height:200px;margin:50px;position:fixed;bottom:30px;left:500px;">
+	</div>
 
-	<div class="columnLateral">
-		<div id="joy1Div" style="width:200px;height:200px;margin:50px"></div>
-		Posizione X:<input id="joy1PosizioneX" type="text" /><br />
-		Posizione Y:<input id="joy1PosizioneY" type="text" /><br />
+	<div class="inner">
+		<div class="inner" id="joy1Div" style="width:200px;height:200px;margin:50px"></div>
+		Position X:<input id="joy1PosizioneX" type="text" /><br />
+		Position1 Y:<input id="joy1PosizioneY" type="text" /><br />
 		Direzione:<input id="joy1Direzione" type="text" /><br />
 		X :<input id="joy1X" type="text" /></br>
 		Y :<input id="joy1Y" type="text" />
+		
 	</div>
 
 	<script type="text/javascript">
@@ -296,38 +345,57 @@
 			joy1Direzione.value = stickData.cardinalDirection;
 			joy1X.value = stickData.x;
 			joy1Y.value = stickData.y;
+			switch (joy1Direzione.value) {
+				case "C":
+					console.log('C');
+					$RG.PersonStopMove();
+					break;
+				case "N":
+					console.log('N');
+					$RG.PersonMoveFW();
+					break;
+				case "S":
+					console.log('S');
+					$RG.PersonMoveBW();
+					break;
+				case "E":
+					console.log('E');
+					$RG.PersonMoveRT();
+					break;
+				case "W":
+					console.log('W');
+					$RG.PersonMoveLF();
+					break;
+				case "NE":
+					console.log('NE');
+					$RG.PersonMoveFwRt();
+					break;
+				case "NW":
+					console.log('NW');
+					$RG.PersonMoveFwLf();
+					break;
+				case "SE":
+					console.log('SE');
+					$RG.PersonMoveBwRt();
+					break;
+				case "SW":
+					console.log('SW');
+					$RG.PersonMoveBwLf();
+					break;
+				default:
+					console.log('C');
+					$RG.PersonStopMove();
+					break;
+			}
 		});
 
-		// Create JoyStick object into the DIV 'joy2Div'
-		var joy2Param = { "title": "joystick2", "autoReturnToCenter": false };
-		var Joy2 = new JoyStick('joy2Div', joy2Param);
 
-		var joy2IinputPosX = document.getElementById("joy2PosizioneX");
-		var joy2InputPosY = document.getElementById("joy2PosizioneY");
-		var joy2Direzione = document.getElementById("joy2Direzione");
-		var joy2X = document.getElementById("joy2X");
-		var joy2Y = document.getElementById("joy2Y");
 
-		setInterval(function () { joy2IinputPosX.value = Joy2.GetPosX(); }, 50);
-		setInterval(function () { joy2InputPosY.value = Joy2.GetPosY(); }, 50);
-		setInterval(function () { joy2Direzione.value = Joy2.GetDir(); }, 50);
-		setInterval(function () { joy2X.value = Joy2.GetX(); }, 50);
-		setInterval(function () { joy2Y.value = Joy2.GetY(); }, 50);
 
-		var joy3Param = { "title": "joystick3" };
-		var Joy3 = new JoyStick('joy3Div', joy3Param);
 
-		var joy3IinputPosX = document.getElementById("joy3PosizioneX");
-		var joy3InputPosY = document.getElementById("joy3PosizioneY");
-		var joy3Direzione = document.getElementById("joy3Direzione");
-		var joy3X = document.getElementById("joy3X");
-		var joy3Y = document.getElementById("joy3Y");
 
-		setInterval(function () { joy3IinputPosX.value = Joy3.GetPosX(); }, 50);
-		setInterval(function () { joy3InputPosY.value = Joy3.GetPosY(); }, 50);
-		setInterval(function () { joy3Direzione.value = Joy3.GetDir(); }, 50);
-		setInterval(function () { joy3X.value = Joy3.GetX(); }, 50);
-		setInterval(function () { joy3Y.value = Joy3.GetY(); }, 50);
+
+
 	</script>
 
 	<!-- buttons -->

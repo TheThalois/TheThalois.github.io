@@ -248,6 +248,55 @@ $CONTROLS.FirstPersonControls = function ( object, domElement, spyhole ) {
 		}
 	};
 
+
+	this.onMoveFW = function ( ) {
+		console.log('onMvFW');
+		this.moveForward = true;
+	};
+	this.onMoveBW = function ( ) {
+		console.log('onMvBW');
+		this.moveBackward = true;
+	};
+	this.onMoveRT = function ( ) {
+		console.log('onMvRT');
+		this.moveRight = true;
+	};
+	this.onMoveLF = function ( ) {
+		console.log('onMvLF');
+		this.moveLeft = true;
+	};
+	this.StopMove = function ( ) {
+		console.log('StopMove');
+		this.moveForward = false;
+		this.moveBackward = false;
+		this.moveRight = false;
+		this.moveLeft = false;
+	};
+
+	this.onMoveFwRt = function ( ) {
+		console.log('onMoveFwRt');
+		this.moveForward = true;
+		this.moveRight = true;
+	};
+	this.onMoveFwLf = function ( ) {
+		console.log('onMoveFwLf');
+		this.moveForward = true;
+		this.moveLeft = true;
+	};
+	this.onMoveBwRt = function ( ) {
+		console.log('onMoveBwRt');		
+		this.moveBackward = true;
+		this.moveRight = true;
+	};
+	this.onMoveBwLf = function ( ) {
+		console.log('onMoveBwLf');		
+		this.moveBackward = true;
+		this.moveLeft = true;
+	};
+
+
+
+
 	this.update = function( delta ) {
 		if ( this.enabled === false ) return;
 	
