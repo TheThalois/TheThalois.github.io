@@ -36,11 +36,11 @@ var JoyStick = (function (container, parameters, callback) {
     var title = (typeof parameters.title === "undefined" ? "joystick" : parameters.title),
         width = (typeof parameters.width === "undefined" ? 0 : parameters.width),
         height = (typeof parameters.height === "undefined" ? 0 : parameters.height),
-        internalFillColor = (typeof parameters.internalFillColor === "undefined" ? "#00AAF0" : parameters.internalFillColor),
-        internalLineWidth = (typeof parameters.internalLineWidth === "undefined" ? 3 : parameters.internalLineWidth),
-        internalStrokeColor = (typeof parameters.internalStrokeColor === "undefined" ? "#00FF00" : parameters.internalStrokeColor),
+        internalFillColor = (typeof parameters.internalFillColor === "undefined" ? "#d3dee0" : parameters.internalFillColor),
+        internalLineWidth = (typeof parameters.internalLineWidth === "undefined" ? 5 : parameters.internalLineWidth),
+        internalStrokeColor = (typeof parameters.internalStrokeColor === "undefined" ? "#ff5e00" : parameters.internalStrokeColor),
         externalLineWidth = (typeof parameters.externalLineWidth === "undefined" ? 4 : parameters.externalLineWidth),
-        externalStrokeColor = (typeof parameters.externalStrokeColor === "undefined" ? "#008FF0" : parameters.externalStrokeColor),
+        externalStrokeColor = (typeof parameters.externalStrokeColor === "undefined" ? "#b5b9ba" : parameters.externalStrokeColor),
         autoReturnToCenter = (typeof parameters.autoReturnToCenter === "undefined" ? true : parameters.autoReturnToCenter);
 
     callback = callback || function (StickStatus) { };
